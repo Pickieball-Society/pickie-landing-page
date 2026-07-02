@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Sora', sans-serif; background: #F7F5EF; color: #061B5B; -webkit-font-smoothing: antialiased; }
+  ::selection { background: #AFFF00; color: #061B5B; }
+</style>
+</helmet>
+<template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#061B5B"/><text x="50" y="62" font-family="Sora, sans-serif" font-weight="800" font-size="34" letter-spacing="-2" text-anchor="middle" fill="#fff">P<tspan fill="#AFFF00">i</tspan></text></svg></template>
+
+<div style="overflow-x: hidden;">
+  <nav style="position: sticky; top: 0; z-index: 50; background: rgba(247,245,239,0.82); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(6,27,91,0.07);">
+    <div style="max-width: 1180px; margin: 0 auto; padding: 16px 28px; display: flex; align-items: center; justify-content: space-between;">
+      <a href="Pickie Landing.dc.html" style="font-family: 'Sora'; font-weight: 800; font-size: 25px; letter-spacing: -0.04em; color: #061B5B; text-decoration: none;">Pick<span style="color: #1488FF;">i</span>e</a>
+      <div style="display: flex; align-items: center; gap: 30px;">
+        <a href="Pickie Privacy.dc.html" style="font-size: 14px; font-weight: 500; color: #061B5B; text-decoration: none; opacity: 0.78;">Privacy</a>
+        <a href="Pickie Landing.dc.html" style="font-size: 14px; font-weight: 700; color: #FFFFFF; background: #061B5B; padding: 11px 20px; border-radius: 999px; text-decoration: none;">Back to home</a>
+      </div>
+    </div>
+  </nav>
+
+  <header style="max-width: 760px; margin: 0 auto; padding: 64px 28px 28px;">
+    <div style="font-size: 13px; font-weight: 700; letter-spacing: 0.1em; color: #1488FF; margin-bottom: 14px;">LEGAL</div>
+    <h1 style="font-size: clamp(36px, 5vw, 56px); line-height: 1.0; letter-spacing: -0.035em; font-weight: 800;">Terms of Service</h1>
+    <p style="font-size: 15px; color: rgba(6,27,91,0.55); margin-top: 16px;">Effective date: July 2, 2026 · Pickie · pickie.app · <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="20535550504f5254605049434b49450e415050">[email&#160;protected]</a></p>
+  </header>
+
+  <main style="max-width: 760px; margin: 0 auto; padding: 12px 28px 90px;">
+    <div style="background: #fff; border: 1px solid rgba(6,27,91,0.06); border-radius: 22px; padding: clamp(28px, 4vw, 48px);">
+      <p style="font-size: 16px; line-height: 1.7; color: rgba(6,27,91,0.72);">These Terms of Service explain the rules for using Pickie. By creating an account, accessing, or using Pickie, you agree to these Terms and our Privacy Policy.</p>
+
+      <sc-for list="{{ sections }}" as="sec" hint-placeholder-count="18">
+        <div>
+          <h2 style="font-size: 22px; font-weight: 800; letter-spacing: -0.02em; margin: 36px 0 12px;">{{ sec.n }}. {{ sec.title }}</h2>
+          <sc-if value="{{ sec.paras }}" hint-placeholder-val="{{ true }}">
+            <sc-for list="{{ sec.paras }}" as="para" hint-placeholder-count="1">
+              <p style="font-size: 16px; line-height: 1.7; color: rgba(6,27,91,0.72); margin-bottom: 10px;">{{ para }}</p>
+            </sc-for>
+          </sc-if>
+          <sc-if value="{{ sec.bullets }}" hint-placeholder-val="{{ true }}">
+            <ul style="margin: 4px 0 10px 22px; font-size: 16px; line-height: 1.7; color: rgba(6,27,91,0.72);">
+              <sc-for list="{{ sec.bullets }}" as="b" hint-placeholder-count="3">
+                <li style="margin-bottom: 5px;">{{ b }}</li>
+              </sc-for>
+            </ul>
+          </sc-if>
+          <sc-if value="{{ sec.note }}" hint-placeholder-val="{{ true }}">
+            <p style="font-size: 16px; line-height: 1.7; color: rgba(6,27,91,0.72); margin-bottom: 10px;">{{ sec.note }}</p>
+          </sc-if>
+          <sc-if value="{{ sec.bullets2 }}" hint-placeholder-val="{{ true }}">
+            <ul style="margin: 4px 0 10px 22px; font-size: 16px; line-height: 1.7; color: rgba(6,27,91,0.72);">
+              <sc-for list="{{ sec.bullets2 }}" as="b2" hint-placeholder-count="3">
+                <li style="margin-bottom: 5px;">{{ b2 }}</li>
+              </sc-for>
+            </ul>
+          </sc-if>
+          <sc-if value="{{ sec.note2 }}" hint-placeholder-val="{{ true }}">
+            <p style="font-size: 16px; line-height: 1.7; color: rgba(6,27,91,0.72); margin-bottom: 10px;">{{ sec.note2 }}</p>
+          </sc-if>
+        </div>
+      </sc-for>
+
+      <div style="margin-top: 40px; padding: 22px 24px; background: #F7F5EF; border-radius: 16px;">
+        <div style="font-weight: 800; font-size: 16px;">Questions about these Terms?</div>
+        <p style="font-size: 15px; line-height: 1.6; color: rgba(6,27,91,0.7); margin-top: 6px;">For questions, reports, complaints, or legal notices, contact us at <a href="/cdn-cgi/l/email-protection#a0d3d5d0d0cfd2d4e0d0c9c3cbc9c58ec1d0d0" style="color: #1488FF; font-weight: 600; text-decoration: none;"><span class="__cf_email__" data-cfemail="f4878184849b8680b4849d979f9d91da958484">[email&#160;protected]</span></a>.</p>
+      </div>
+    </div>
+  </main>
+
+  <footer style="border-top: 1px solid rgba(6,27,91,0.08);">
+    <div style="max-width: 1180px; margin: 0 auto; padding: 36px 28px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 18px;">
+      <div>
+        <div style="font-family: 'Sora'; font-weight: 800; font-size: 22px; letter-spacing: -0.04em;">Pick<span style="color:#1488FF;">i</span>e</div>
+        <div style="font-size: 13px; color: rgba(6,27,91,0.5); margin-top: 4px;">Find Your Match. Be Pickie.</div>
+      </div>
+      <div style="display: flex; gap: 26px; font-size: 13px; font-weight: 500;">
+        <a href="Pickie Landing.dc.html" style="color: rgba(6,27,91,0.62); text-decoration: none;">Home</a>
+        <a href="Pickie Terms.dc.html" style="color: rgba(6,27,91,0.62); text-decoration: none;">Terms</a>
+        <a href="Pickie Privacy.dc.html" style="color: rgba(6,27,91,0.62); text-decoration: none;">Privacy</a>
+        <a href="/cdn-cgi/l/email-protection#72010702021d000632021b11191b175c130202" style="color: rgba(6,27,91,0.62); text-decoration: none;">Contact</a>
+      </div>
+      <div style="font-size: 12.5px; color: rgba(6,27,91,0.4);">© 2026 Pickie · pickie.app</div>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const sections = [
+      { n: 1, title: 'Acceptance of Terms', paras: [
+        'Welcome to Pickie. These Terms of Service govern your access to and use of Pickie, including our mobile application, website, services, features, and related products.',
+        'By creating an account, accessing, or using Pickie, you agree to these Terms and our Privacy Policy. If you do not agree, you must not use Pickie.',
+      ] },
+      { n: 2, title: 'About Pickie', paras: [
+        'Pickie is a sports social matching platform designed to help pickleball players discover, connect, match, and communicate with other players.',
+        'Pickie may include features such as:',
+      ], bullets: [
+        'Account registration and login',
+        'Player profile creation',
+        'Discover and swipe-based player matching',
+        'QR-based or nearby player matching',
+        'Chat between matched users',
+        'Profile editing',
+        'User report and block features',
+        'Account and privacy settings',
+      ], note: 'Pickie is a technology platform. We are not a sports venue, event organizer, coach, medical provider, safety provider, dating service, or background-check service.' },
+      { n: 3, title: 'Eligibility', paras: [
+        'You must be at least 18 years old to use Pickie.',
+        'By using Pickie, you confirm that:',
+      ], bullets: [
+        'You are at least 18 years old.',
+        'You are legally allowed to use Pickie in your country or region.',
+        'The information you provide is accurate and belongs to you.',
+        'You will use Pickie for lawful and respectful purposes.',
+      ], note: 'We may suspend, restrict, or delete accounts if we believe a user is underage or has provided false information.' },
+      { n: 4, title: 'Account Registration', paras: [
+        'To use Pickie, you may need to create an account using supported login methods such as email, Google, Apple, or other methods we may support in the future.',
+        'You are responsible for:',
+      ], bullets: [
+        'Keeping your login credentials secure.',
+        'Maintaining accurate profile information.',
+        'All activity that happens under your account.',
+        'Not sharing, selling, or transferring your account to another person.',
+      ] },
+      { n: 5, title: 'User Profile and Content', paras: [
+        'You may upload or provide content such as your name, profile photo, bio, gender, date of birth or age, skill level, playing style, preferred play area, interests, and other profile information.',
+        'You own the content you upload. However, by uploading content to Pickie, you grant Pickie a non-exclusive, worldwide, royalty-free license to host, store, process, display, and share your content as needed to operate the service.',
+        'For example, your profile photo and player information may be shown to other users in discovery, match, chat, or profile features.',
+        'You agree not to upload content that:',
+      ], bullets: [
+        'Is false, misleading, abusive, threatening, discriminatory, sexually explicit, or illegal.',
+        'Violates another person\u2019s privacy, intellectual property, or publicity rights.',
+        'Contains another person\u2019s personal information without consent.',
+        'Promotes scams, spam, commercial solicitation, or harmful activity.',
+        'Contains malware, scripts, bots, or harmful code.',
+      ] },
+      { n: 6, title: 'Matching, Chat, and User Interaction', paras: [
+        'Pickie helps users discover and communicate with other players. We do not guarantee that:',
+      ], bullets: [
+        'You will receive matches.',
+        'A match will result in a real game.',
+        'Other users are who they claim to be.',
+        'Other users will behave safely, respectfully, or honestly.',
+        'A venue, court, or playing location is safe or suitable.',
+      ], note: 'You are responsible for your own interactions with other users, both online and offline. When meeting someone in person, you should:', bullets2: [
+        'Meet in a public sports venue.',
+        'Tell someone you trust where you are going.',
+        'Use your own judgment before sharing personal information.',
+        'Stop communicating with anyone who makes you uncomfortable.',
+        'Use block and report features when needed.',
+      ] },
+      { n: 7, title: 'Sports and Physical Activity Risk', paras: [
+        'Pickleball and other sports involve physical activity and may carry risk of injury.',
+        'By using Pickie, you understand and agree that:',
+      ], bullets: [
+        'You are responsible for determining whether you are fit to play.',
+        'You are responsible for checking the safety of any venue, court, equipment, or activity.',
+        'Pickie does not inspect, control, endorse, or guarantee venues, players, coaches, clubs, or organizers.',
+        'Pickie is not liable for injuries, accidents, disputes, losses, or damages arising from your participation in sports or offline meetings.',
+      ] },
+      { n: 8, title: 'Location-Based Features', paras: [
+        'Pickie may use your location to support features such as nearby discovery, radius filtering, match now, QR-based matching, and player recommendations.',
+        'You may disable location access through your device settings. However, some features may not work properly without location access.',
+        'Pickie collects precise current location only when needed for app functionality and with your permission.',
+      ] },
+      { n: 9, title: 'Prohibited Activities', paras: ['You agree not to:'], bullets: [
+        'Harass, threaten, stalk, bully, defame, or abuse other users.',
+        'Use Pickie for scams, fraud, spam, fake profiles, or misleading behavior.',
+        'Pretend to be another person.',
+        'Use another user\u2019s information for commercial, spam, harassment, or unlawful purposes.',
+        'Scrape, crawl, copy, extract, or harvest user data.',
+        'Use bots, automation, scripts, or unauthorized APIs.',
+        'Create multiple accounts to bypass restrictions or bans.',
+        'Upload illegal, harmful, offensive, or infringing content.',
+        'Interfere with Pickie\u2019s systems, servers, security, or operation.',
+        'Use Pickie in a way that violates applicable laws.',
+      ] },
+      { n: 10, title: 'Reports, Blocks, Restrictions, and Enforcement', paras: [
+        'Pickie may provide tools to report or block users.',
+        'We may review user reports, account activity, profile content, chat content, and technical signals to protect the community.',
+        'Depending on the situation, Pickie may:',
+      ], bullets: [
+        'Remove content.',
+        'Warn a user.',
+        'Restrict account features.',
+        'Suspend an account.',
+        'Permanently ban an account.',
+        'Block device, phone, email, or IP-based access.',
+        'Report serious issues to relevant authorities where legally required.',
+      ], note: 'We are not required to pre-screen all content or messages, but we may review content when needed for safety, abuse prevention, legal compliance, or service operation.' },
+      { n: 11, title: 'Paid Features and Subscriptions', paras: [
+        'Pickie may offer paid features, premium subscriptions, boosts, virtual items, or other paid services in the future.',
+        'If paid features are offered through Apple App Store or Google Play, billing, cancellation, and refunds may be handled by the relevant app store according to their rules.',
+        'Deleting the Pickie app from your device does not automatically cancel an active subscription. You must cancel through the relevant app store or payment provider.',
+      ] },
+      { n: 12, title: 'Intellectual Property', paras: [
+        'Pickie, including its app, website, design, logo, brand, software, features, database, user interface, and related materials, is owned by Pickie or its licensors.',
+        'You may not copy, modify, distribute, sell, reverse engineer, scrape, or commercially exploit Pickie without written permission.',
+      ] },
+      { n: 13, title: 'Account Deactivation and Deletion', paras: [
+        'You may deactivate or delete your account through the app settings or by contacting support@pickie.app.',
+        'Deactivation may hide your profile but does not permanently delete your data.',
+        'Account deletion means we will delete or anonymize your personal data unless we need to retain certain information for legal, security, fraud prevention, dispute resolution, or legitimate business reasons.',
+      ] },
+      { n: 14, title: 'Disclaimers', paras: [
+        'Pickie is provided on an \u201cas is\u201d and \u201cas available\u201d basis.',
+        'We do not guarantee that Pickie will be uninterrupted, error-free, secure, or always available.',
+        'We do not guarantee the conduct, identity, skill level, availability, safety, or reliability of any user.',
+      ] },
+      { n: 15, title: 'Limitation of Liability', paras: [
+        'To the maximum extent allowed by law, Pickie is not liable for indirect, incidental, special, consequential, punitive, or exemplary damages, including loss of data, loss of profit, injury, offline disputes, or user misconduct.',
+      ] },
+      { n: 16, title: 'Changes to These Terms', paras: [
+        'We may update these Terms from time to time. If changes are material, we may notify you through the app, email, or other reasonable method.',
+        'Continued use of Pickie after the effective date of updated Terms means you accept the updated Terms.',
+      ] },
+      { n: 17, title: 'Governing Law', paras: [
+        'These Terms are governed by the laws of the Republic of Indonesia, unless another jurisdiction is required by applicable law.',
+      ] },
+      { n: 18, title: 'Contact Us', paras: [
+        'For questions, reports, complaints, or legal notices, contact us at support@pickie.app.',
+      ] },
+    ];
+    return { sections };
+  }
+}
+</script>
+</body>
+</html>

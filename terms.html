@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Sora', sans-serif; background: #F7F5EF; color: #061B5B; -webkit-font-smoothing: antialiased; }
+  ::selection { background: #AFFF00; color: #061B5B; }
+</style>
+</helmet>
+<template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#061B5B"/><text x="50" y="62" font-family="Sora, sans-serif" font-weight="800" font-size="34" letter-spacing="-2" text-anchor="middle" fill="#fff">P<tspan fill="#AFFF00">i</tspan></text></svg></template>
+
+<div style="overflow-x: hidden;">
+  <nav style="position: sticky; top: 0; z-index: 50; background: rgba(247,245,239,0.82); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(6,27,91,0.07);">
+    <div style="max-width: 1180px; margin: 0 auto; padding: 16px 28px; display: flex; align-items: center; justify-content: space-between;">
+      <a href="Pickie Landing.dc.html" style="font-family: 'Sora'; font-weight: 800; font-size: 25px; letter-spacing: -0.04em; color: #061B5B; text-decoration: none;">Pick<span style="color: #1488FF;">i</span>e</a>
+      <div style="display: flex; align-items: center; gap: 30px;">
+        <a href="Pickie Terms.dc.html" style="font-size: 14px; font-weight: 500; color: #061B5B; text-decoration: none; opacity: 0.78;">Terms</a>
+        <a href="Pickie Landing.dc.html" style="font-size: 14px; font-weight: 700; color: #FFFFFF; background: #061B5B; padding: 11px 20px; border-radius: 999px; text-decoration: none;">Back to home</a>
+      </div>
+    </div>
+  </nav>
+
+  <header style="max-width: 760px; margin: 0 auto; padding: 64px 28px 28px;">
+    <div style="font-size: 13px; font-weight: 700; letter-spacing: 0.1em; color: #1488FF; margin-bottom: 14px;">LEGAL</div>
+    <h1 style="font-size: clamp(36px, 5vw, 56px); line-height: 1.0; letter-spacing: -0.035em; font-weight: 800;">Privacy Policy</h1>
+    <p style="font-size: 15px; color: rgba(6,27,91,0.55); margin-top: 16px;">Effective date: July 2, 2026 · Pickie · pickie.app · <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="20535550504f5254605049434b49450e415050">[email&#160;protected]</a></p>
+  </header>
+
+  <main style="max-width: 760px; margin: 0 auto; padding: 12px 28px 90px;">
+    <div style="background: #fff; border: 1px solid rgba(6,27,91,0.06); border-radius: 22px; padding: clamp(28px, 4vw, 48px);">
+      <p style="font-size: 16px; line-height: 1.7; color: rgba(6,27,91,0.72);">This Privacy Policy explains how Pickie collects, uses, stores, shares, and protects personal data when users use our app, website, and related services.</p>
+
+      <sc-for list="{{ sections }}" as="sec" hint-placeholder-count="18">
+        <div>
+          <h2 style="font-size: 22px; font-weight: 800; letter-spacing: -0.02em; margin: 36px 0 12px;">{{ sec.n }}. {{ sec.title }}</h2>
+          <sc-if value="{{ sec.paras }}" hint-placeholder-val="{{ true }}">
+            <sc-for list="{{ sec.paras }}" as="para" hint-placeholder-count="1">
+              <p style="font-size: 16px; line-height: 1.7; color: rgba(6,27,91,0.72); margin-bottom: 10px;">{{ para }}</p>
+            </sc-for>
+          </sc-if>
+          <sc-if value="{{ sec.bullets }}" hint-placeholder-val="{{ true }}">
+            <ul style="margin: 4px 0 10px 22px; font-size: 16px; line-height: 1.7; color: rgba(6,27,91,0.72);">
+              <sc-for list="{{ sec.bullets }}" as="b" hint-placeholder-count="3">
+                <li style="margin-bottom: 5px;">{{ b }}</li>
+              </sc-for>
+            </ul>
+          </sc-if>
+          <sc-if value="{{ sec.note }}" hint-placeholder-val="{{ true }}">
+            <p style="font-size: 16px; line-height: 1.7; color: rgba(6,27,91,0.72); margin-bottom: 10px;">{{ sec.note }}</p>
+          </sc-if>
+          <sc-if value="{{ sec.subs }}" hint-placeholder-val="{{ true }}">
+            <sc-for list="{{ sec.subs }}" as="sub" hint-placeholder-count="2">
+              <div>
+                <h3 style="font-size: 17px; font-weight: 700; letter-spacing: -0.01em; margin: 22px 0 8px;">{{ sub.t }}</h3>
+                <sc-if value="{{ sub.paras }}" hint-placeholder-val="{{ true }}">
+                  <sc-for list="{{ sub.paras }}" as="sp" hint-placeholder-count="1">
+                    <p style="font-size: 16px; line-height: 1.7; color: rgba(6,27,91,0.72); margin-bottom: 10px;">{{ sp }}</p>
+                  </sc-for>
+                </sc-if>
+                <sc-if value="{{ sub.bullets }}" hint-placeholder-val="{{ true }}">
+                  <ul style="margin: 4px 0 10px 22px; font-size: 16px; line-height: 1.7; color: rgba(6,27,91,0.72);">
+                    <sc-for list="{{ sub.bullets }}" as="sb" hint-placeholder-count="3">
+                      <li style="margin-bottom: 5px;">{{ sb }}</li>
+                    </sc-for>
+                  </ul>
+                </sc-if>
+                <sc-if value="{{ sub.note }}" hint-placeholder-val="{{ true }}">
+                  <p style="font-size: 16px; line-height: 1.7; color: rgba(6,27,91,0.72); margin-bottom: 10px;">{{ sub.note }}</p>
+                </sc-if>
+              </div>
+            </sc-for>
+          </sc-if>
+        </div>
+      </sc-for>
+
+      <div style="margin-top: 40px; padding: 22px 24px; background: #F7F5EF; border-radius: 16px;">
+        <div style="font-weight: 800; font-size: 16px;">Privacy questions or requests?</div>
+        <p style="font-size: 15px; line-height: 1.6; color: rgba(6,27,91,0.7); margin-top: 6px;">For privacy questions, data requests, deletion requests, or complaints, contact us at <a href="/cdn-cgi/l/email-protection#65161015150a171125150c060e0c004b041515" style="color: #1488FF; font-weight: 600; text-decoration: none;"><span class="__cf_email__" data-cfemail="c9babcb9b9a6bbbd89b9a0aaa2a0ace7a8b9b9">[email&#160;protected]</span></a>.</p>
+      </div>
+    </div>
+  </main>
+
+  <footer style="border-top: 1px solid rgba(6,27,91,0.08);">
+    <div style="max-width: 1180px; margin: 0 auto; padding: 36px 28px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 18px;">
+      <div>
+        <div style="font-family: 'Sora'; font-weight: 800; font-size: 22px; letter-spacing: -0.04em;">Pick<span style="color:#1488FF;">i</span>e</div>
+        <div style="font-size: 13px; color: rgba(6,27,91,0.5); margin-top: 4px;">Find Your Match. Be Pickie.</div>
+      </div>
+      <div style="display: flex; gap: 26px; font-size: 13px; font-weight: 500;">
+        <a href="Pickie Landing.dc.html" style="color: rgba(6,27,91,0.62); text-decoration: none;">Home</a>
+        <a href="Pickie Terms.dc.html" style="color: rgba(6,27,91,0.62); text-decoration: none;">Terms</a>
+        <a href="Pickie Privacy.dc.html" style="color: rgba(6,27,91,0.62); text-decoration: none;">Privacy</a>
+        <a href="/cdn-cgi/l/email-protection#592a2c2929362b2d1929303a32303c77382929" style="color: rgba(6,27,91,0.62); text-decoration: none;">Contact</a>
+      </div>
+      <div style="font-size: 12.5px; color: rgba(6,27,91,0.4);">© 2026 Pickie · pickie.app</div>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const sections = [
+      { n: 1, title: 'Introduction', paras: [
+        'This Privacy Policy explains how Pickie collects, uses, stores, shares, and protects your personal data when you use our app, website, and related services.',
+        'By using Pickie, you understand that we process your personal data as described in this Privacy Policy. This Privacy Policy also serves as a Privacy Notice under Indonesian Law No. 27/2022. By registering, accessing or using Pickie, users acknowledge they have read and understood this Privacy Policy and, where consent is required by law, expressly consent to the collection, use, storage, disclosure, transfer and other processing of their personal data.',
+      ] },
+      { n: 2, title: 'Personal Data We Collect', paras: [
+        'We collect personal data directly from users, automatically through use of the Platform, and where permitted by law, from third parties such as login providers. Users are responsible for ensuring the accuracy of the personal data they provide. We may collect the following types of data:',
+      ], subs: [
+        { t: '2.1 Account Data', bullets: ['Name', 'Email address', 'Login method', 'User ID', 'Password or authentication credential, where applicable', 'Account status', 'Account creation date'] },
+        { t: '2.2 Profile Data', bullets: ['Profile photo', 'Bio', 'Gender', 'Date of birth or age', 'Country and city', 'Preferred play area', 'Skill level', 'Playing style', 'Looking-for preferences', 'Sports interests'] },
+        { t: '2.3 Location Data', paras: ['We may collect location data when you use location-based features, such as discover, nearby matching, match now, QR matching, or radius filtering. This may include:'], bullets: ['Approximate location', 'Current location while using the app', 'Preferred play city or area'], note: 'You can control location permission through your device settings.' },
+        { t: '2.4 Match and Interaction Data', bullets: ['Likes', 'Passes', 'Matches', 'QR match activity', 'Nearby match activity', 'Blocked users', 'Reported users', 'Chat metadata', 'Match preferences'] },
+        { t: '2.5 Chat and User Content', paras: ['We may process messages, photos, reports, and content you submit in the app.', 'We may review content when needed for safety, moderation, abuse handling, legal compliance, or support.'] },
+        { t: '2.6 Device and Technical Data', bullets: ['Device type', 'Operating system', 'App version', 'IP address', 'Device identifiers', 'Crash logs', 'Performance logs', 'Security logs'] },
+        { t: '2.7 Payment Data', paras: ['If Pickie offers paid features in the future, payment may be processed through Apple, Google, or other payment providers. Pickie may receive limited purchase-related information, such as subscription status, transaction reference, and product purchased.', 'We do not store full credit card details unless explicitly stated and handled by a compliant payment provider.'] },
+        { t: '2.8 Support and Communication Data', paras: ['When you contact us, we may collect your email, message, support request, screenshots, and related information needed to respond.'] },
+      ] },
+      { n: 3, title: 'How We Use Your Data', paras: ['We use your data to:'], bullets: [
+        'Create and manage your account.',
+        'Show your profile to relevant users.',
+        'Recommend players and potential matches.',
+        'Enable swipe, match, QR match, nearby detection, and chat.',
+        'Provide safety, block, and report features.',
+        'Prevent fraud, spam, abuse, fake accounts, and harmful activity.',
+        'Send notifications, reminders, updates, and service messages.',
+        'Improve app performance, analytics, and user experience.',
+        'Provide customer support.',
+        'Process purchases or subscriptions, if applicable.',
+        'Comply with legal obligations.',
+        'Enforce our Terms of Service, including platform administration, fraud prevention, legal claims, dispute resolution, compliance, internal audit, business operations and service improvement.',
+      ] },
+      { n: 4, title: 'Data Shown to Other Users', paras: ['Some information is visible to other users, such as:'], bullets: [
+        'Name or display name', 'Profile photo', 'Age or age range', 'Gender, if shown in the app', 'City or preferred play area', 'Skill level', 'Playing style', 'Bio', 'Match status', 'Other profile information you choose to display',
+      ], note: 'You should not include sensitive personal information in your profile or chat unless you are comfortable sharing it.' },
+      { n: 5, title: 'How We Share Data', subs: [
+        { t: '5.1 With Other Users', paras: ['We share profile and matching information as needed to operate Pickie.'] },
+        { t: '5.2 With Service Providers', paras: ['We may use trusted service providers for hosting, database, authentication, analytics, crash reporting, push notifications, payments, customer support, and security.', 'Examples may include services such as Supabase, Firebase, Apple, Google, analytics tools, hosting providers, or email services.'] },
+        { t: '5.3 For Safety and Legal Reasons', paras: ['We may disclose data if needed to:'], bullets: ['Comply with law or legal process.', 'Protect user safety.', 'Investigate fraud, abuse, or security issues.', 'Enforce our Terms.', 'Protect Pickie\u2019s rights, property, and community.'] },
+        { t: '5.4 Business Transfer', paras: ['If Pickie is involved in a merger, acquisition, financing, restructuring, sale of assets, or similar business transaction, user data may be transferred as part of that transaction, subject to applicable law.'] },
+        { t: '5.5 No Sale of Personal Data', paras: ['We do not sell your personal data.', 'If we work with partners, events, clubs, or brands in the future, we will only share personal data with clear disclosure and consent where required. We may also share personal data with affiliates, professional advisers, regulators and law enforcement where required by law.'] },
+      ] },
+      { n: 6, title: 'Legal Basis for Processing', paras: ['Depending on the applicable law, we process personal data based on:'], bullets: [
+        'Your consent.',
+        'Performance of our agreement with you.',
+        'Compliance with legal obligations.',
+        'Protection of vital interests or safety.',
+        'Legitimate business interests, balanced with your rights.',
+        'Other lawful bases permitted by applicable law, including other lawful grounds recognized under UU PDP.',
+      ] },
+      { n: 7, title: 'Data Retention', paras: [
+        'We keep your personal data for as long as needed to provide Pickie, maintain your account, comply with legal obligations, resolve disputes, prevent fraud, and enforce our Terms.',
+        'If you delete your account, we will delete or anonymize your personal data unless retention is required for legal, security, fraud prevention, dispute resolution, or legitimate business reasons.',
+        'Aggregated or anonymized data may be retained because it does not directly identify you. After expiry, data will be deleted, anonymized or otherwise disposed of in accordance with applicable law unless retention is legally required.',
+      ] },
+      { n: 8, title: 'Account Deletion', paras: [
+        'You may request account deletion through the app or by contacting support@pickie.app.',
+        'When your account is deleted:',
+      ], bullets: [
+        'Your public profile will no longer be visible.',
+        'Your personal account data will be deleted or anonymized.',
+        'Some data may be retained where legally or operationally necessary.',
+        'Messages already sent to other users may remain visible to them unless deletion is technically and legally required.',
+        'Reports, safety logs, and abuse-prevention records may be retained for community protection.',
+      ] },
+      { n: 9, title: 'Your Privacy Rights', paras: ['Depending on your location and applicable law, you may have the right to:'], bullets: [
+        'Request information about how your data is processed.',
+        'Access a copy of your personal data.',
+        'Correct inaccurate data.',
+        'Delete your personal data.',
+        'Withdraw consent.',
+        'Restrict or object to certain processing.',
+        'Request data portability.',
+        'Object to certain automated decisions or profiling.',
+        'File a complaint with the relevant authority.',
+      ], note: 'Users may also withdraw consent at any time where processing is based on consent, without affecting processing already lawfully carried out. Certain requests may be limited where permitted by law. To exercise your rights, contact us at support@pickie.app.' },
+      { n: 10, title: 'Children\u2019s Privacy', paras: [
+        'Pickie is intended for users aged 18 and above.',
+        'We do not knowingly collect personal data from users under 18. If we learn that an underage user has created an account, we may delete or restrict the account.',
+        'If Pickie later allows minors, we must create a separate child-safety and parental-consent flow.',
+      ] },
+      { n: 11, title: 'Location Privacy', paras: [
+        'Pickie uses location to help users find nearby players and relevant matches.',
+        'Pickie follows these location privacy principles:',
+      ], bullets: [
+        'Use precise current location only when the user activates location-based features.',
+        'Do not collect background location unless absolutely necessary.',
+        'Do not show exact live location to other users.',
+        'Show approximate location, city, or distance range instead.',
+        'Allow users to disable location permission.',
+      ] },
+      { n: 12, title: 'Security', paras: [
+        'We use reasonable technical and organizational measures to protect personal data, such as encryption, access control, authentication, monitoring, and secure infrastructure.',
+        'However, no app, website, or internet transmission is 100% secure.',
+        'If a personal data breach occurs, Pickie will take appropriate steps according to applicable law.',
+      ] },
+      { n: 13, title: 'International Data Transfer', paras: [
+        'Pickie may use service providers located outside your country. When data is transferred internationally, we will take reasonable steps to protect it according to applicable law. Pickie will implement safeguards required under applicable law before cross-border transfers.',
+      ] },
+      { n: 14, title: 'Third-Party Services', paras: [
+        'Pickie may contain links, integrations, login services, SDKs, or tools provided by third parties. Their privacy practices are governed by their own policies.',
+        'Examples may include:',
+      ], bullets: ['Google login', 'Apple login', 'Firebase', 'Supabase', 'Analytics tools', 'Payment providers', 'Push notification providers'] },
+      { n: 15, title: 'Push Notifications and Communications', paras: [
+        'We may send push notifications, service updates, safety messages, match alerts, chat alerts, and promotional messages.',
+        'You can control push notifications through your device settings.',
+      ] },
+      { n: 16, title: 'Role of Pickie as Data Controller', paras: [
+        'Pickie acts as the controller of users\u2019 personal data and may appoint processors to process personal data on its behalf subject to confidentiality and security obligations.',
+      ] },
+      { n: 17, title: 'Changes to This Privacy Policy', paras: [
+        'We may update this Privacy Policy from time to time. If changes are material, we may notify you through the app, email, or another reasonable method.',
+        'Continued use after the effective date constitutes acceptance of the updated Privacy Policy to the extent permitted by applicable law.',
+      ] },
+      { n: 18, title: 'Contact Us', paras: [
+        'For privacy questions, data requests, deletion requests, or complaints, contact us at support@pickie.app.',
+      ] },
+    ];
+    return { sections };
+  }
+}
+</script>
+</body>
+</html>
