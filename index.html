@@ -33,7 +33,7 @@
   <!-- Firebase Analytics -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-app.js";
-    import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-analytics.js";
+    import { getAnalytics, logEvent } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-analytics.js";
 
     const firebaseConfig = {
       apiKey: "AIzaSyCFZ1-ajIiRBIkZA6p7hzzBpRib8Ydv7Zo",
@@ -47,6 +47,117 @@
 
     const app = initializeApp(firebaseConfig);
     const analytics = getAnalytics(app);
+
+    // ---- Event tracking ---------------------------------------------------
+    // Traffic source, attached to every event as `platform`:
+    //   mobile_app  -> ?platform=app (or src=app), the app's WebView UA token
+    //                  ("PickieApp"), or a WebView JS bridge. Persisted so it
+    //                  survives navigation to terms.html / privacy.html.
+    //   mobile_web  -> a mobile browser
+    //   desktop_web -> everything else
+    var PICKIE_PLATFORM = (function () {
+      try {
+        var qs = new URLSearchParams(location.search);
+        var forced = (qs.get('platform') || qs.get('src') || '').toLowerCase();
+        if (['app', 'mobile_app', 'ios', 'android', 'flutter'].indexOf(forced) !== -1) {
+          try { localStorage.setItem('pickie_platform', 'mobile_app'); } catch (e) {}
+          return 'mobile_app';
+        }
+        try { if (localStorage.getItem('pickie_platform') === 'mobile_app') return 'mobile_app'; } catch (e) {}
+        var ua = navigator.userAgent || '';
+        if (/PickieApp/i.test(ua) || window.PickieApp || window.flutter_inappwebview || window.ReactNativeWebView) return 'mobile_app';
+        var isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(ua) || (navigator.userAgentData && navigator.userAgentData.mobile);
+        return isMobile ? 'mobile_web' : 'desktop_web';
+      } catch (e) { return 'web'; }
+    })();
+
+    // Helper so events can be fired from anywhere on the page. Every event
+    // automatically carries the `platform` source parameter.
+    window.trackEvent = function (name, params) {
+      var merged = Object.assign({ platform: PICKIE_PLATFORM }, params || {});
+      try { logEvent(analytics, name, merged); } catch (e) { /* no-op */ }
+    };
+
+    // The page is rendered by a client-side bundler that swaps <html> after
+    // load. `document` survives that swap, so a single delegated listener in
+    // the capture phase reliably catches clicks on the dynamically-rendered
+    // links and buttons.
+    if (!window.__pickieTracking) {
+      window.__pickieTracking = true;
+      document.addEventListener('click', function (e) {
+        const el = e.target.closest && e.target.closest('a, button, [role="button"]');
+        if (!el) return;
+
+        const text = (el.innerText || el.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 60);
+        const href = el.getAttribute('href') || '';
+        const inNav = !!el.closest('nav');
+        const inFooter = !!el.closest('footer');
+        const location = inNav ? 'header_nav' : (inFooter ? 'footer' : 'page');
+
+        // Identify an App Store / Google Play button from its label or (future) URL.
+        let store = '';
+        if (/apps\.apple\.com|itunes\.apple\.com/i.test(href) || /app store|apple/i.test(text)) store = 'app_store';
+        else if (/play\.google\.com/i.test(href) || /google play/i.test(text)) store = 'google_play';
+
+        // 1. FAQ accordion buttons (buttons with a label, excluding the nav toggle).
+        //    faq_id is a stable slug so you can rank the top FAQ in GA4 even if
+        //    the wording changes; question keeps the human-readable text.
+        if (el.tagName === 'BUTTON' && !inNav && text) {
+          var faqId = text.toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_+|_+$/g, '').slice(0, 40);
+          window.trackEvent('faq_toggle', { question: text, faq_id: faqId });
+          return;
+        }
+
+        // 2. Contact / email links
+        if (/^mailto:/i.test(href)) {
+          window.trackEvent('contact_click', { method: 'email', address: href.replace(/^mailto:/i, '') });
+          return;
+        }
+
+        // 3. App-download buttons — a dedicated event per store. Fires whether the
+        //    button is still a placeholder (#) or points at a real store URL.
+        if (store) {
+          const params = { cta_label: text, location: location };
+          if (/^https?:\/\//i.test(href)) params.link_url = href.slice(0, 120);
+          window.trackEvent(store === 'app_store' ? 'download_app_store' : 'download_google_play', params);
+          return;
+        }
+
+        // 4. Other real external links
+        if (/^https?:\/\//i.test(href)) {
+          let domain = '';
+          try { domain = new URL(href).hostname; } catch (_) {}
+          window.trackEvent('outbound_link_click', { link_url: href.slice(0, 120), link_domain: domain, link_text: text });
+          return;
+        }
+
+        // 5. "Get the app" — generic CTA that scrolls to the download section
+        if (href === '#get') {
+          window.trackEvent('cta_click', { cta_label: text || 'get_the_app', location: location });
+          return;
+        }
+
+        // 6. In-page section navigation (the menu links)
+        if (href.charAt(0) === '#' && text) {
+          window.trackEvent('menu_click', { menu_item: text, target_section: href, location: location });
+          return;
+        }
+
+        // 7. Terms & Privacy get their own events; other .html links stay generic.
+        if (/privacy\.html/i.test(href)) {
+          window.trackEvent('privacy_click', { link_text: text, location: location });
+          return;
+        }
+        if (/terms\.html/i.test(href)) {
+          window.trackEvent('terms_click', { link_text: text, location: location });
+          return;
+        }
+        if (/\.html($|[?#])/i.test(href)) {
+          window.trackEvent('page_link_click', { link_text: text, href: href });
+          return;
+        }
+      }, true);
+    }
   </script>
 </head>
 <body>
